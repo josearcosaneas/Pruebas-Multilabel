@@ -14,6 +14,7 @@ import numpy as np
 #stem = dict.fromkeys(stem)
 #stem= stem.keys()
 """
+Quitamos espacios para pasar las materias unidas.
 """
 def Replace(String):
     String = String.replace(" ","")
@@ -24,7 +25,6 @@ espacio = ' '
 def unirPalabras(lista):
     salida = ''
     for i in lista:
-
         salida += espacio + i
     return salida
 """
@@ -96,19 +96,29 @@ GeneraTarget(materias)
 ficheros = os.listdir('/home/blunt/Escritorio/TFG-SIDP/iniciativas') # linux
 materias = []
 parrafos = []
+extracto = []
+
 for i in ficheros:
+
     path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
+    
     materias.append(leerTags(path,'materias'))
     parrafos.append(leerTags(path,'parrafo'))
+    extracto.append(leerTags(path,'extracto'))
+    
+    
 """
 """
+
+   
+    
 def PreparaParrafos(parrafos):
     tokensTrain = []
     for i in parrafos:
         tokens = tokenize(i)
-        STOP_TYPES =['.',',',':',';','desde' , 'para', 'por', 'a' , 'ante','bajo','con','contra','asi']
+        STOP_TYPES =['.',',',':',';','desde' , 'para', 'por', 'a' , 'ante','bajo','cabe','con','contra','asi','durante','en','hacia','este','mediante','para','por','segun','sin','so','sobre','tras','vresus','via']
         good_words = [w for w in tokens if w not in STOP_TYPES]
-        aux=unirPalabras(good_words)
+        aux=unirPalabras(good_words)# Formamos un texto
         aux = str(aux)
         tokensTrain.append(aux)
     return tokensTrain
@@ -118,7 +128,7 @@ def PreparaParrafos(parrafos):
 def PreparaTest(parrafo):
     #tokensTest=[]
     tokens = tokenize(parrafo)
-    STOP_TYPES =['.',',',':',';','desde' , 'para', 'por', 'a' , 'ante','bajo','con','contra','asi']
+    STOP_TYPES =['.',',',':',';','desde' , 'para', 'por', 'a' , 'ante','bajo','cabe','con','contra','asi','durante','en','hacia','este','mediante','para','por','segun','sin','so','sobre','tras','vresus','via']
     good_words = [w for w in tokens if w not in STOP_TYPES]
     aux=unirPalabras(good_words)
     aux = str(aux)
