@@ -2,7 +2,7 @@
 """
 Created on Tue May  5 22:44:00 2015
 
-@author: blunt
+@author: Jose Arcos Aneas
 
     Archivo que se encarga de clasificar los datos y evaluar los resultados
     obtenidos por el clasificador.

@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*- 
 """
+Created on Tue May  5 22:44:00 2015
+
+@author: Jose Arcos Aneas
+
+    Archivo que se encarga de clasificar los datos y evaluar los resultados
+    obtenidos por el clasificador.
+    
 """
 #path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"
 import os

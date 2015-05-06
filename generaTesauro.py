@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr 22 23:52:53 2015
+Created on Tue May  5 22:44:00 2015
 
-@author: blunt
+@author: Jose Arcos Aneas
+
+    Archivo que se encarga de clasificar los datos y evaluar los resultados
+    obtenidos por el clasificador.
+    
 """
 import re
 from xml.dom.minidom import parse
