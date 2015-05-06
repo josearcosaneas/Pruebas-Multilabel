@@ -16,6 +16,33 @@ import numpy as np
 """
 Quitamos espacios para pasar las materias unidas.
 """
+def leerTags(path,tag):
+    midom=parse(path)
+    elements = midom.getElementsByTagName(tag)
+    resultList1 = []
+    if len(elements) > 0:
+        for i in range(0,len(elements)):
+            resultList1.extend([elements[i].childNodes[0].nodeValue])
+    return resultList1
+    
+"""
+"""
+ficheros = os.listdir('/home/blunt/Escritorio/TFG-SIDP/iniciativas') # linux
+materias = []
+parrafos = []
+extracto = []
+
+for i in ficheros:
+
+    path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
+    
+    materias.append(leerTags(path,'materias'))
+    parrafos.append(leerTags(path,'parrafo'))
+    extracto.append(leerTags(path,'extracto'))
+    
+    
+"""
+"""
 def Replace(String):
     String = String.replace(" ","")
     return String
@@ -29,16 +56,8 @@ def unirPalabras(lista):
     return salida
 """
 """
-def leerTags(path,tag):
-    midom=parse(path)
-    elements = midom.getElementsByTagName(tag)
-    resultList1 = []
-    if len(elements) > 0:
-        for i in range(0,len(elements)):
-            resultList1.extend([elements[i].childNodes[0].nodeValue])
-    return resultList1
-"""
-"""
+
+
 def tokenize(resultList1):
     entrada=[]
     for i in range(0,len(resultList1)):
@@ -90,25 +109,8 @@ def GeneraTarget(materias):
         label.append(nuevo)
     label=list(set(label))
     return label
-GeneraTarget(materias)
-"""
-"""
-ficheros = os.listdir('/home/blunt/Escritorio/TFG-SIDP/iniciativas') # linux
-materias = []
-parrafos = []
-extracto = []
+#GeneraTarget(materias)
 
-for i in ficheros:
-
-    path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
-    
-    materias.append(leerTags(path,'materias'))
-    parrafos.append(leerTags(path,'parrafo'))
-    extracto.append(leerTags(path,'extracto'))
-    
-    
-"""
-"""
 
    
     
@@ -144,5 +146,5 @@ def PreparaMaterias(materias):
         materiasTrain.append(i)
     return materiasTrain
     
-#PreparaMaterias(materias)
+PreparaMaterias(materias)
 
