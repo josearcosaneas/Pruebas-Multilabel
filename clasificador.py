@@ -59,8 +59,21 @@ def evalucion(Y_predict, Y_test, etiqueta):
         print '--> Recall= '+ recall_score(Y_predict,Y_test)
         print '--> F1-score= '+ f1_score(Y_predict,Y_test)
         
-        
-        
 
+
+X_test = np.array(['nice day in nyc',
+                   'welcome to london',
+                   'london is rainy',
+                   'it is raining in britian',
+                   'it is raining in britian and the big apple',
+                   'it is raining in britian and nyc',
+                   'hello welcome to new york. enjoy it here and london too'])
+print type(X_test)
+        
+y_train_text = [["new york"],["new york"],["new york"],["new york"],["new york"],
+                ["new york"],["london"],["london"],["london"],["london"],
+                ["london"],["london"],["new york","london"],["new york","london"]]
+
+print type(y_train_text)
     
     

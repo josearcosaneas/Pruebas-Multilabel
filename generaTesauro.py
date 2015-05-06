@@ -62,8 +62,10 @@ def GeneraTarget(materias):
         #print nuevo
         label.append(nuevo)
     label=list(set(label))
-    print len(label)
-GeneraTarget(materias)
+    return label
+    
+target_set=GeneraTarget(materias)
+print target_set
     
     
     
