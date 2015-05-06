@@ -33,7 +33,7 @@ def leerTags(path,tag):
         for i in range(0,len(elements)):
             resultList1.extend([elements[i].childNodes[0].nodeValue])
     return resultList1
-    
+     
 """
 """
 ficherosT = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTraining') # linux
@@ -85,8 +85,6 @@ def clasificador(X_train, y_train, X_test, target_names):
     for item, labels in zip(X_test, all_label):
         print '%s => %s' % (item, ','.join(labels))
 
-
-
 def evalucion(Y_predict, Y_test, etiqueta):
     if etiqueta == 'Precision':
         print '--> Precision = '+ precision_score(Y_predict, Y_test)
@@ -99,8 +97,6 @@ def evalucion(Y_predict, Y_test, etiqueta):
         print '--> Recall= '+ recall_score(Y_predict,Y_test)
         print '--> F1-score= '+ f1_score(Y_predict,Y_test)
         
-
-
 """
 """
 espacio = ' '
@@ -221,10 +217,9 @@ for i in ficheros:
 #PreparaMaterias(materiasT)
 X_train = PreparaTest(extractoE)
 y_train = PreparaMaterias(materiasE)
-
 X_test = PreparaTest(extractoT)
 y_test = PreparaMaterias(materiasT)
-print len(X_train)
+
 r = 0
 entrena = []
 for i in range(0,len(X_train)):
@@ -240,21 +235,9 @@ for i in range(0,len(X_test)):
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
 
-
-
-
-
 #print extractoT[0][0]
 
-
-print type(X_train[0])
-print type(y_train[0])
 target_names=GeneraTarget(materias)
-print type(target_names[0])
-print type(target_names)
-print type(entrena[0])
-print type(test[0])
-
 
 #print X_train
 #print y_train
