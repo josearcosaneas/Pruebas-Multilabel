@@ -51,7 +51,7 @@ for i in ficherosT:
 for i in ficherosE:
     path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
     materiasE.append(leerTags(path,'materias'))
-    extractoE.append(leerTags(path,'extracto'))
+    extractoE.append(leerTags(path,'parrafo'))
     
 """
 """
@@ -215,11 +215,11 @@ for i in ficheros:
             materias.append(resultList[i])
     
 #PreparaMaterias(materiasT)
-X_train = PreparaTest(extractoE)
+X_train = PreparaParrafos(extractoE)
 y_train = PreparaMaterias(materiasE)
 X_test = PreparaTest(extractoT)
 y_test = PreparaMaterias(materiasT)
-
+print X_train
 r = 0
 entrena = []
 for i in range(0,len(X_train)):
@@ -234,6 +234,7 @@ for i in range(0,len(X_test)):
 
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
+print entrena
 
 #print extractoT[0][0]
 
