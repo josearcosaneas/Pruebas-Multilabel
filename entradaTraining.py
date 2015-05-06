@@ -228,14 +228,14 @@ print len(X_train)
 r = 0
 entrena = []
 for i in range(0,len(X_train)):
-    entrena.append(X_train[1])
+    entrena.append(X_train[i][0])
 
 for i in range (0,len(entrena)):
     entrena [i]=np.string_(entrena[i])
  
 test = []
 for i in range(0,len(X_test)):
-    test.append(X_test[1])
+    test.append(X_test[i][0])
 
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
@@ -254,4 +254,10 @@ print type(target_names[0])
 print type(target_names)
 print type(entrena[0])
 print type(test[0])
+
+
+#print X_train
+#print y_train
+#print test
+#print entrena
 clasificador(entrena, y_train, test, target_names)
