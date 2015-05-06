@@ -1,11 +1,10 @@
+# -*- coding: utf8 -*-
 """
 @author Jose Arcos Aneas
 
 Prueba de uso de la libreia summa de python para resumir textos.
-Para la prueba uso un archivo XML.
-
 """
-# -*- coding: utf8 -*-
+
 
 from summa import summarizer
 
@@ -27,7 +26,7 @@ sentence =[]
 for i in resultList:
     sentence.append(i)
 sentence=str(sentence)
-
+print sentence
 # Mostramos el texto y el resumen, usando el lenguaje Español para especificar las keywords
 
 print sentence
