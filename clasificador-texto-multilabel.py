@@ -210,7 +210,9 @@ def PreparaParrafos(parrafos):
        
     return tokensTrain
 """
-
+Hace lo mismo que el anterior pero tan solo con un parrafo
+Se usa tambien para preparar trozos de texto que cuente solo con un parrafo como es el caso 
+de la clasificacion tan solo con el extracto.
 """
 def PreparaTest(parrafo):
     #tokensTest=[]
@@ -225,6 +227,7 @@ def PreparaTest(parrafo):
     return aux
 
 """
+Preparacion de materias para pasar al clasificador 
 """    
 def PreparaMaterias(materias):
     materiasTrain = []
@@ -234,6 +237,10 @@ def PreparaMaterias(materias):
         materiasTrain.append(i)
     
     return materiasTrain
+    
+"""
+Pruebas para comprobar resultados
+"""
 # Lectura de ficheros del directorio
 ficheros = os.listdir('/home/blunt/Escritorio/TFG-SIDP/iniciativas') # linux
 materias = []
