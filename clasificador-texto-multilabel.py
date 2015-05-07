@@ -108,7 +108,11 @@ def clasificador(X_train, y_train, X_test, target_names):
     
     for item, labels in zip(X_test, all_label):
         print '%s => %s' % (item, ','.join(labels))
-
+"""
+Funcion encargada de evaluar los resultados del clasificador 
+Calcula la prescision, el recall o el F1. En caso de no indicarse que valor debe devolver
+una llamada a esta funcion, se devolvera el valor de todos (tanto de f1, recall y precision)
+"""
 def evalucion(Y_predict, Y_test, etiqueta):
     if etiqueta == 'Precision':
         print '--> Precision = '+ precision_score(Y_predict, Y_test)
@@ -120,8 +124,9 @@ def evalucion(Y_predict, Y_test, etiqueta):
         print '--> Precision = '+ precision_score(Y_predict, Y_test) 
         print '--> Recall= '+ recall_score(Y_predict,Y_test)
         print '--> F1-score= '+ f1_score(Y_predict,Y_test)
-        
 """
+Funcion que se encarga de unir palabras de un array en un string.
+Une las palabras de un vector en una sola frase.
 """
 espacio = ' '
 def unirPalabras(lista):
@@ -129,10 +134,10 @@ def unirPalabras(lista):
     for i in lista:
         salida += espacio + i
     return salida
-"""
-"""
 
-
+"""
+Funcion encarga de tokenize para una sentencia
+"""
 def tokenize(resultList1):
     entrada=[]
     for i in range(0,len(resultList1)):
@@ -145,6 +150,7 @@ def tokenize(resultList1):
             entrada.append( stemmer.stem(i))
     return entrada
 """
+Funcion encargada de tokenize para varias sentencias
 """    
 def tokenizeT(result):
     entradaT=[]
@@ -153,6 +159,7 @@ def tokenizeT(result):
     entradaT.append(entrada)
         
 """
+Funcion encargada de transformar materias para su entrada 
 """
 def transformaMaterias(materiasF):
     label=[]
@@ -166,6 +173,7 @@ def transformaMaterias(materiasF):
 
     return label
 """
+Genera el tesauro
 """
 def GeneraTarget(materias):
     for i in range(0,len(materias)):
@@ -185,7 +193,10 @@ def GeneraTarget(materias):
     label=list(set(label))
     return label
 """
-
+Funcion encarga de preparar los parrafos del texto para pasarlo al clasificador:
+    -   tokenize
+    -   stemming
+    -   summarize
 """
 def PreparaParrafos(parrafos):
     tokensTrain = []
