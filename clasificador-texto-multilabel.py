@@ -57,7 +57,7 @@ extractoT = []
 for i in ficherosT:
     path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
     materiasT.append(leerTags(path,'materias'))
-    extractoT.append(leerTags(path,'extracto'))
+    extractoT.append(leerTags(path,'parrafo'))
 
 # Leemos los de entrenamiento
 for i in ficherosE:
@@ -134,6 +134,16 @@ def unirPalabras(lista):
     for i in lista:
         salida += espacio + i
     return salida
+"""
+Funcion para resumir las entradas del training y test
+"""
+
+def resumirTodo(parrafos):
+    for i in range(0,len(extractoT)):
+        extractoT[i] =str(extractoT[i])
+    for i in range(0,len(extractoT)):
+        extractoT[i]=resumir(extractoT[i])
+#resumirTodo(extractoT)
 
 """
 Funcion encarga de tokenize para una sentencia
@@ -257,11 +267,14 @@ for i in ficheros:
             materias.append(resultList[i])
     
 #PreparaMaterias(materiasT)
+X_train = resumirTodo(extractoE)
 X_train = PreparaParrafos(extractoE)
-y_train = PreparaMaterias(materiasE)
+X_test = resumirTodo(extractoT)
 X_test = PreparaTest(extractoT)
+y_train = PreparaMaterias(materiasE)
 y_test = PreparaMaterias(materiasT)
-print X_train
+
+print type(X_train[0])
 r = 0
 entrena = []
 for i in range(0,len(X_train)):
@@ -271,12 +284,11 @@ for i in range (0,len(entrena)):
     entrena [i]=np.string_(entrena[i])
  
 test = []
-for i in range(0,len(X_test)):
-    test.append(X_test[i][0])
+#for i in range(0,len(X_test)):
+#    test.append(X_test[i][0])
 
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
-print entrena 
 
 #print extractoT[0][0]
 
@@ -285,5 +297,5 @@ target_names=GeneraTarget(materias)
 #print X_train
 #print y_train
 #print test
-#print entrena
-clasificador(entrena, y_train, test, target_names)
+
+#clasificador(entrena, y_train, test, target_names)
