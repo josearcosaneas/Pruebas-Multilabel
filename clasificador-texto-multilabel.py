@@ -8,7 +8,7 @@ Created on Tue May  5 22:44:00 2015
     obtenidos por el clasificador.
     
 """
-#path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"
+
 import os
 from nltk.corpus import stopwords
 from summa import summarizer
@@ -31,7 +31,9 @@ from sklearn.cross_validation import cross_val_score, KFold
 #stem = dict.fromkeys(stem)
 #stem= stem.keys()
 """
-Quitamos espacios para pasar las materias unidas.
+Funcion encargada de Leer un Tags en un archivo XML.
+    Path = lugar de almacenamiento del fichero.
+    Tags = tag que vamos leer.
 """
 def leerTags(path,tag):
     midom=parse(path)
@@ -41,8 +43,8 @@ def leerTags(path,tag):
         for i in range(0,len(elements)):
             resultList1.extend([elements[i].childNodes[0].nodeValue])
     return resultList1
-     
 """
+Leemos los directorios para recorrerlos y leer todos los archivos de ellos
 """
 ficherosT = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTraining') # linux
 ficherosE = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTest')
@@ -50,33 +52,40 @@ materiasE = []
 extractoE = []
 materiasT = []
 extractoT = []
+# leemos todos los archivos de los ficheros en los que estamos interasados
+# leemos los archivos de training
 for i in ficherosT:
     path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
     materiasT.append(leerTags(path,'materias'))
     extractoT.append(leerTags(path,'extracto'))
 
-    
+# Leemos los de entrenamiento
 for i in ficherosE:
     path="/home/blunt/Escritorio/TFG-SIDP/iniciativas/"+i
     materiasE.append(leerTags(path,'materias'))
     extractoE.append(leerTags(path,'parrafo'))
     
 """
+Funcion que se encarga suprimir espacios
 """
 def Replace(String):
     String = String.replace(" ","")
     return String
 """
+Funcion que se encarga de resumir un texto
 """
 def resumir(texto,lenguaje='spanish'):
     if not(lenguaje):
         return summarizer.summarize(texto, language='spanish')
     else:
         return summarizer.summarize(texto, language=lenguaje)
-
 """
+Funcion que se encarga de clasificar:
+    X_train - conjunto X para training - type -> np.array y los elementos de este del tipo np.string_
+    y_train - conjunto y para training - type -> list de list
+    X_test - conjunto X para test - type -> np.array y los elementos de este del tipo np.string_
+    target_names - es la lista de todos los elementos del Tesauro - type -> list
 """    
-
 def clasificador(X_train, y_train, X_test, target_names):
     
     lb = preprocessing.LabelBinarizer()
@@ -249,7 +258,7 @@ for i in range(0,len(X_test)):
 
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
-print entrena
+print entrena 
 
 #print extractoT[0][0]
 
