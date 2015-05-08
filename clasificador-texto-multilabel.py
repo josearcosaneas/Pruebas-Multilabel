@@ -46,8 +46,8 @@ def leerTags(path,tag):
 """
 Leemos los directorios para recorrerlos y leer todos los archivos de ellos
 """
-ficherosT = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTraining') # linux
-ficherosE = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTest')
+ficherosT = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTest') # linux
+ficherosE = os.listdir('/home/blunt/Escritorio/iniciativas/iniciativasTraining')
 materiasE = []
 extractoE = []
 materiasT = []
@@ -143,6 +143,7 @@ def resumirTodo(parrafos):
         extractoT[i] =str(extractoT[i])
     for i in range(0,len(extractoT)):
         extractoT[i]=resumir(extractoT[i])
+    return extractoT
 #resumirTodo(extractoT)
 
 """
@@ -250,7 +251,7 @@ def PreparaMaterias(materias):
     
 """
 Pruebas para comprobar resultados
-"""
+
 # Lectura de ficheros del directorio
 ficheros = os.listdir('/home/blunt/Escritorio/TFG-SIDP/iniciativas') # linux
 materias = []
@@ -267,14 +268,18 @@ for i in ficheros:
             materias.append(resultList[i])
     
 #PreparaMaterias(materiasT)
+#print extractoE
+print type(extractoT)
+print type(extractoT[0])
 X_train = resumirTodo(extractoE)
-X_train = PreparaParrafos(extractoE)
-X_test = resumirTodo(extractoT)
-X_test = PreparaTest(extractoT)
-y_train = PreparaMaterias(materiasE)
-y_test = PreparaMaterias(materiasT)
 
-print type(X_train[0])
+#X_train = PreparaParrafos(extractoE)
+X_test = resumirTodo(extractoE)
+
+y_train = PreparaMaterias(materiasE)
+#y_test = PreparaMaterias(materiasT)
+
+X_train=list(X_train)
 r = 0
 entrena = []
 for i in range(0,len(X_train)):
@@ -282,10 +287,11 @@ for i in range(0,len(X_train)):
 
 for i in range (0,len(entrena)):
     entrena [i]=np.string_(entrena[i])
- 
+
+X_test=list(X_test)
 test = []
-#for i in range(0,len(X_test)):
-#    test.append(X_test[i][0])
+for i in range(0,len(X_test)):
+    test.append(X_test[i][0])
 
 for i in range (0,len(test)):
     test[i]=np.string_(test[i])
@@ -299,3 +305,4 @@ target_names=GeneraTarget(materias)
 #print test
 
 #clasificador(entrena, y_train, test, target_names)
+"""
