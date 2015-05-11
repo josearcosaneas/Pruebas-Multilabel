@@ -8,6 +8,7 @@ Created on Tue May  5 22:44:00 2015
     obtenidos por el clasificador.
     
 """
+import time
 
 import os
 from nltk.corpus import stopwords
@@ -266,7 +267,8 @@ for i in ficheros:
         for i in range(0,len(elements)):
             resultList.extend([elements[i].childNodes[0].nodeValue])
             materias.append(resultList[i])
-    
+
+target_names=GeneraTarget(materias)
 #PreparaMaterias(materiasT)
 #print extractoE
 print type(extractoT)
@@ -298,7 +300,6 @@ for i in range (0,len(test)):
 
 #print extractoT[0][0]
 
-target_names=GeneraTarget(materias)
 
 #print X_train
 #print y_train
